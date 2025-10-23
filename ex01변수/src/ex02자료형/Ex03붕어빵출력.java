@@ -17,7 +17,7 @@ public class Ex03붕어빵출력 {
   System.out.println("붕어빵의 개수 :"+num);
    
    
-   
+//2025.10.23 GitHub 실습
 	}
 
 }

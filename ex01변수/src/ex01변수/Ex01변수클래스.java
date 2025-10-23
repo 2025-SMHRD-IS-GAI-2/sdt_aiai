@@ -37,7 +37,7 @@ public class Ex01변수클래스 {
 		// 정수를 영어로 integer!
 		int box=sc.nextInt();
 		System.out.println(box);
-		// 10/24 11시 05분
+		// 10/24 11시 05분 ㄱㄱ
 	
 	}
 

@@ -31,7 +31,7 @@ public class Ex01변수클래스 {
 		// =를 기준으로 오른쪽의 데이터를 왼쪽에 넣는다
 		int box=sc.nextInt();
 		System.out.println(box);
-		
+		//황철승
 	}
 
 }

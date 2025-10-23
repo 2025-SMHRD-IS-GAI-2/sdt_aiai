@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Ex03붕어빵출력 {
 
 	public static void main(String[] args) {
-    // 1. 입력 받는 도구 가져오기
+    // 1. 입력 받는 도구 가져오기  철
 	// 2. 구매 희망하는 팥붕 개수 출력
 	// 3. 팥붕 개수 입력받아서 num에 저장
 	// 4. 팥붕 개수 입력받아, 변수 num선언하여 할당.

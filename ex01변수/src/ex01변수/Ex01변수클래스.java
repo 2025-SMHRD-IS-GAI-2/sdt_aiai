@@ -38,6 +38,7 @@ public class Ex01변수클래스 {
 		int box=sc.nextInt();
 		System.out.println(box);
 		// 10/24 11시 05분 ㄱㄱ
+		// 안녕하세요
 	
 	}
 

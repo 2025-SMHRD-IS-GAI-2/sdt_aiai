@@ -7,6 +7,7 @@ public class Ex02자료형실습 {
 		// - 키워드 : boolean
 		// - 크기 : 1byte
 		// - 범위(저장가능한 데이터) : true, false
+		// git 업데이트 확인 주석 한줄 추가(박동진)
 		boolean isRainy = false;
 		
 		// 2. 문자형(Character Type)

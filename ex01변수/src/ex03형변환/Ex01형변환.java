@@ -21,7 +21,7 @@ public class Ex01형변환 {
 		System.out.println(bb);
 		// 73.2가 강제 형변환으로 인해 73 출력
 		
-		
+//		2025.10.31.커밋 연습
 	}
 
 }

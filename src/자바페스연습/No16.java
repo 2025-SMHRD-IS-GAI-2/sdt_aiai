@@ -15,7 +15,7 @@ public class No16 {
      }
 	System.out.println("합은 "+num2+ " 입니다.");// 출력물
 	// 123 1234
-		//213
+		//2131
 	}
 
 }

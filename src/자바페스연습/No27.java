@@ -7,7 +7,7 @@ public class No27 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("정답 입력 :");
-        String str = sc.next();
+        String str = sc.next();// 정답 입력을 위한 도구
 
         int sum = 0;   // 총점. 결과 대입을 위해 0으로 시작.
         int cnt = 0;   // 연속된 o 개수

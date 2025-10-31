@@ -1,10 +1,13 @@
 package 자바페스연습;
 
+import java.util.Arrays;
+
 public class No21 {
 
 	public static void main(String[] args) {
 
 		int[] point = { 92, 32, 52, 9, 81, 2, 68 };//비교할 숫자 데이터를 담은 배열.
+		System.out.println("배열에 있는 모든 값 : "+ Arrays.toString(point));// Arrays.toString 을 이용하여 한번에 출력.
 
 		// 기준값 만들기
 		int min = Math.abs(point[0] - point[1]);//int min = Math.abs(point[0]-point[1]);
@@ -12,7 +15,7 @@ public class No21 {
 //		→ Math.abs(92 - 32) = 60
 //		→ 현재 min = 60
 //
-//	    즉, “현재까지 발견한 최소 거리값은 60이다”로 시작.
+//	    즉, "현재까지 발견한 최소 거리값은 60이다"로 시작.
 
 		int a = 0;
 		int b = 0;
@@ -53,7 +56,7 @@ public class No21 {
 			}
 		}
 		System.out.println("result = ["+a + ","+b+"]");
-        //a와 b는 “가장 가까운 두 수의 인덱스”. 라는 출력물
+        //a와 b는 "가장 가까운 두 수의 인덱스". 라는 출력물
 	}
 
 }

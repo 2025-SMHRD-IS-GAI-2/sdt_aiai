@@ -16,9 +16,9 @@ public class SMDAO {
 	public void getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "hr";
-			String password = "12345";
+			String url = "jdbc:oracle:thin:@project-db-campus.smhrd.com:1524:xe";
+			String user = "campus_25IS_GA2_P1_1";
+			String password = "smhrd1";
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class SMDAO {
 		int row = 0;
 		try {
 			getConn();
-			String sql = "INSERT INTO STUDYMATE VALUES(?,?,?,?)";
+			String sql = "INSERT INTO SMUSER VALUES(?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, smvo.getId());
 			psmt.setString(2, smvo.getPw());
@@ -64,7 +64,7 @@ public class SMDAO {
 		String result_name = null;
 		try {
 			getConn();
-			String sql = "select * from studymate where id = ? and pw = ?";
+			String sql = "select * from smuser where id = ? and pw = ?";
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, smvo.getId());
@@ -93,7 +93,7 @@ public class SMDAO {
 			// 1. DB 연결
 			getConn();
 			// 2. SQL 구문 작성
-			String sql = "delete from studymate where id = ?and pw = ?";
+			String sql = "delete from smuser where id = ?and pw = ?";
 			// 3. SQL을 전송할 준비
 			psmt = conn.prepareStatement(sql);
 

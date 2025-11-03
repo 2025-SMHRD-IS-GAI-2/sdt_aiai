@@ -43,11 +43,12 @@ public class SMDAO {
 		int row = 0;
 		try {
 			getConn();
-			String sql = "INSERT INTO STUDYMATE VALUES(?,?,?)";
+			String sql = "INSERT INTO STUDYMATE VALUES(?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, smvo.getId());
 			psmt.setString(2, smvo.getPw());
 			psmt.setString(3, smvo.getName());
+			psmt.setInt(3, smvo.getAge());
 			row = psmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

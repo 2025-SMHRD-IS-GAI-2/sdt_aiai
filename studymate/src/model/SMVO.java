@@ -5,11 +5,19 @@ public class SMVO {
 	String id;
 	String pw;
 	String name;
-	public SMVO(String id, String pw, String name) {
+	int age;
+	public SMVO(String id, String pw, String name, int age) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
+		this.age = age;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
 	}
 	public SMVO() {
 	}

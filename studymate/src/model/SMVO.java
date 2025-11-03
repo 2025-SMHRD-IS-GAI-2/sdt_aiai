@@ -6,6 +6,8 @@ public class SMVO {
 	String pw;
 	String name;
 	int age;
+	int goal_time;
+	String user_id;
 	public SMVO(String id, String pw, String name, int age) {
 		super();
 		this.id = id;
@@ -39,5 +41,13 @@ public class SMVO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public void setGoaltime(int goal_time) {
+		this.goal_time = goal_time;
+	}
+	public void setUserid(String user_id) {
+		this.user_id= user_id;
+		
+		
 	}
 }//2

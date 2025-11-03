@@ -64,7 +64,7 @@ public class SMDAO {
 		String result_name = null;
 		try {
 			getConn();
-			String sql = "select * from smuser where id = ? and pw = ?";
+			String sql = "select * from smuser where user_id = ? and pw = ?";
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, smvo.getId());
@@ -93,7 +93,7 @@ public class SMDAO {
 			// 1. DB 연결
 			getConn();
 			// 2. SQL 구문 작성
-			String sql = "delete from smuser where id = ?and pw = ?";
+			String sql = "delete from smuser where user_id = ?and pw = ?";
 			// 3. SQL을 전송할 준비
 			psmt = conn.prepareStatement(sql);
 
@@ -113,5 +113,10 @@ public class SMDAO {
 		} finally {
 			getClose();
 		}return row;
-}//3
+}
+
+	public void addInfo(SMVO smvo) {
+		getConn();
+	
+	}
 }

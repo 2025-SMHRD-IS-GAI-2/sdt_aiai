@@ -84,4 +84,34 @@ public class SMView {
 			System.out.println("회원 탈퇴 실패");
 		}
 	}
-}// 3
+
+	public int showMainMenu() {
+		 System.out.println("===== 메인 메뉴 =====");
+		    System.out.print("[1] 할 일 등록 [2] 학습 달성률 조회 [3] 로그아웃 >> ");
+		 
+
+		    Scanner sc = new Scanner(System.in);
+		    return sc.nextInt();  // ✅ int 반환
+		}
+
+	public int inputInfo() {
+		System.out.print("과목을 선택 해주세요 : ");
+		System.out.print("[1] 수학 [2] 영어 >> ");
+		int choice =sc.nextInt();
+		return choice;
+		
+	}
+
+	public SMVO insertInfo() {
+		System.out.print("목표 학습 시간을 입력 해주세요 : ");
+		int goal_time=sc.nextInt();
+		System.out.print("현재 아이디를 입력 해주세요 : ");
+		String user_id=sc.next();
+		SMVO smvo = new SMVO();
+		smvo.setGoaltime(goal_time);
+		smvo.setUserid(user_id);
+		return smvo;
+	}
+	}
+
+

@@ -32,4 +32,4 @@ public class SMVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-}
+}//2

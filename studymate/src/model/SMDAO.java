@@ -48,7 +48,7 @@ public class SMDAO {
 			psmt.setString(1, smvo.getId());
 			psmt.setString(2, smvo.getPw());
 			psmt.setString(3, smvo.getName());
-			psmt.setInt(3, smvo.getAge());
+			psmt.setInt(4, smvo.getAge());
 			row = psmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -86,5 +86,32 @@ public class SMDAO {
 		}
 		return result_name;
 
-	}//1
+	}public int delete(SMVO smvo) {
+
+		int row = 0;
+		try {
+			// 1. DB 연결
+			getConn();
+			// 2. SQL 구문 작성
+			String sql = "delete from studymate where id = ?and pw = ?";
+			// 3. SQL을 전송할 준비
+			psmt = conn.prepareStatement(sql);
+
+			// 4. 데이터 바인딩 작업( 물음표 채워주는 작업 )
+			psmt.setString(1, smvo.getId());
+			psmt.setString(2, smvo.getPw());
+			// 5. SQL문 실행
+			row = psmt.executeUpdate();
+
+			// ? 인자 채워주기
+
+			// select
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			getClose();
+		}return row;
+}
 }

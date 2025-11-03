@@ -6,9 +6,9 @@ public class StudymateMain {
 
 	public static void main(String[] args) {
 		
-		SMController memberController =new SMController();
+		SMController smController =new SMController();
 
-		memberController.run();
+		smController.run();
 	}
 
 }//5

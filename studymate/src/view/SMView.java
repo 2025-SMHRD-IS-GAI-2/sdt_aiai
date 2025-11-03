@@ -9,7 +9,7 @@ public class SMView {
 
 	public int showMenu() {
 		System.out.println("===== 스터디 메이트 =====");
-		System.out.print("[1] 회원 가입 [2] 로그인 ");
+		System.out.print("[1] 회원 가입 [2] 로그인 [3]회원 탈퇴 ");
 		int choice = sc.nextInt();
 
 		return choice;
@@ -22,7 +22,7 @@ public class SMView {
 		String pw = sc.next();
 		System.out.print("이름 입력 : ");
 		String name = sc.next();
-		System.out.println("나이 입력");
+		System.out.print("나이 입력 : ");
 		int age = sc.nextInt();
 		SMVO smvo = new SMVO(id, pw, name, age);
 		return smvo;

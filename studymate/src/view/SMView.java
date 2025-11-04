@@ -2,17 +2,17 @@ package view;
 
 import java.util.Scanner;
 
+import model.SMDAO;
 import model.SMVO;
 
 public class SMView {
 	Scanner sc = new Scanner(System.in);
+	SMDAO dao = new SMDAO();
 
 	public int showMenu() {
 		System.out.println("===== 스터디 메이트 =====");
-		System.out.print("[1] 회원 가입 [2] 로그인 [3]회원 탈퇴 ");
-		int choice = sc.nextInt();
-
-		return choice;
+		System.out.print("[1] 회원 가입 [2] 로그인 [3] 회원 탈퇴 >> ");
+		return sc.nextInt();
 	}
 
 	public SMVO showJoin() {
@@ -24,94 +24,90 @@ public class SMView {
 		String name = sc.next();
 		System.out.print("나이 입력 : ");
 		int age = sc.nextInt();
-		SMVO smvo = new SMVO(id, pw, name, age);
-		return smvo;
 
+		return new SMVO(id, pw, name, age);
 	}
 
 	public void statusJoin(int row) {
-		if (row > 0) {
-			System.out.println("회원가입 성공");
-		} else {
-			System.out.println("회원가입 실패");
-		}
-
+		System.out.println(row > 0 ? "회원가입 성공" : "회원가입 실패");
 	}
 
 	public SMVO showLogin() {
-		System.out.print("ID를 입력 해 주세요 : ");
-		String input_id = sc.next();
-		System.out.print("PW를 입력 해 주세요 : ");
-		String input_pw = sc.next();
+		System.out.print("ID 입력 : ");
+		String id = sc.next();
+		System.out.print("PW 입력 : ");
+		String pw = sc.next();
 		SMVO smvo = new SMVO();
-		smvo.setId(input_id);
-		smvo.setPw(input_pw);
+		smvo.setUser_id(id);
+		smvo.setPw(pw);
 		return smvo;
-
 	}
 
-	public void statusLogin(String result_name) {
-		if (result_name != null) {
+	public void statusLogin(String name) {
+		if (name != null) {
 			System.out.println("로그인 성공");
-			System.out.println(result_name + "님 환영합니다.");
-			//
-			SMVO smvo = new SMVO();
-			smvo.setName(result_name);
+			System.out.println(name + "님 환영합니다!");
+			System.out.println("설정 값 초기화.");
+		
 		} else {
-			System.out.println("아이디 혹은 비밀번호를 확인해 주세요.");
+			System.out.println("아이디 또는 비밀번호가 일치하지 않습니다.");
 		}
 	}
 
-	public SMVO showDelete(String result) {
-		System.out.println("삭제할 아이디를 입력하세요 : ");
-		String delete_id = sc.next();
-		System.out.println("비밀번호를 입력하세요.");
-		String delete_pw = sc.next();
-		// id와 pw를 controller로 전달하기 위해서
-		// 개별적으로 전달x , 하나로 묶어서 전달하기 위함
-		// --> 객체 생성!
-		// --> 체의 필드값을 통해서 id,pw를 넣어준다
+	public SMVO showDelete() {
+		System.out.print("삭제할 ID 입력 : ");
+		String id = sc.next();
+		System.out.print("PW 입력 : ");
+		String pw = sc.next();
+
 		SMVO smvo = new SMVO();
-		smvo.setId(delete_id);
-		smvo.setPw(delete_pw);
+		smvo.setUser_id(id);
+		smvo.setPw(pw);
 		return smvo;
 	}
 
 	public void statusDelete(int row) {
-		if (row > 0) {
-			System.out.println("회원 탈퇴 되었습니다.");
-		} else {
-			System.out.println("회원 탈퇴 실패");
-		}
+		System.out.println(row > 0 ? "회원 탈퇴 완료" : "회원 탈퇴 실패");
 	}
 
 	public int showMainMenu() {
-		 System.out.println("===== 메인 메뉴 =====");
-		    System.out.print("[1] 할 일 등록 [2] 학습 달성률 조회 [3] 로그아웃 >> ");
-		 
-
-		    Scanner sc = new Scanner(System.in);
-		    return sc.nextInt();  // ✅ int 반환
-		}
-
-	public int inputInfo() {
-		System.out.print("과목을 선택 해주세요 : ");
-		System.out.print("[1] 수학 [2] 영어 >> ");
-		int choice =sc.nextInt();
-		return choice;
+		System.out.println("===== 메인 메뉴 =====");
+		System.out.print("[1] 할 일 등록 [2] 로그아웃 >> ");
+		return sc.nextInt();
 		
 	}
+	
 
-	public SMVO insertInfo() {
-		System.out.print("목표 학습 시간을 입력 해주세요 : ");
-		int goal_time=sc.nextInt();
-		System.out.print("현재 아이디를 입력 해주세요 : ");
+	public int showTime() {
+		System.out.print("지금까지 학습한 시간을 입력 해 주세요 : ");
+		int stime = sc.nextInt();
+		return stime;
+	}
+
+	public int inputInfo() {
+		System.out.print("과목 선택 : [1] 수학 [2] 영어 >> ");
+		return sc.nextInt();
+	}
+
+	public SMVO insertInfo(int sub) {
+		System.out.print("목표 학습 시간(분) 입력 : ");
+		int goal = sc.nextInt();
+		System.out.print("실제 학습 시간(분) 입력 : ");
+		int input = sc.nextInt();
+		System.out.print("아이디를 입력해주세요 : ");
 		String user_id=sc.next();
+
 		SMVO smvo = new SMVO();
-		smvo.setGoaltime(goal_time);
-		smvo.setUserid(user_id);
+		if(sub == 1) {
+			smvo.setMath_goal_time(goal);
+			smvo.setMath_input_time(input);
+		}else if(sub ==2) {
+			smvo.setEng_goal_time(goal);
+			smvo.setEng_input_time(input);
+		}
+		
+		smvo.setUser_id(user_id);
+
 		return smvo;
 	}
-	}
-
-
+}

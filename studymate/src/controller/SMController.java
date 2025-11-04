@@ -1,12 +1,45 @@
 package controller;
 
+import java.util.Scanner;
+
 import model.SMDAO;
 import model.SMVO;
+import view.Quotes;
 import view.SMView;
 
 public class SMController {
 	SMDAO dao = new SMDAO();
 	SMView view = new SMView();
+	Scanner sc =new Scanner(System.in);
+
+	public void showMainMenu() {
+		SMView view = new SMView();
+
+		while (true) {
+			int select = view.showMainMenu(); // ✅ 이제 문제 없음
+
+			if (select == 1) {
+				System.out.println("📌 할 일 등록 기능 실행!");
+				int choice = view.inputInfo();
+				if (choice == 1) {
+					SMVO smvo = view.insertInfo(1);
+					dao.setInfo(smvo);
+				} else if (choice == 2) {
+					SMVO smvo = view.insertInfo(2);
+					dao.setInfo2(smvo);
+				}
+			} else if (select == 2) {
+				System.out.println("📌 학습 달성률 조회 실행!");
+
+			} else if (select == 3) {
+				System.out.println("📌 로그아웃합니다.");
+				break;
+			} else {
+				System.out.println("⚠️ 잘못된 입력입니다. 다시 선택하세요.");
+
+			}
+		}
+	}
 
 	public void run() {
 		// view 의 기능 실행하는 메서드
@@ -23,44 +56,45 @@ public class SMController {
 				SMVO member = view.showLogin();
 				String result = dao.login(member);
 				view.statusLogin(result);
-				if (result != null) { // ✅ 로그인 성공 시
-					break; // while 종료 → 다음 화면으로 이동
+				Quotes qt = new Quotes();
+				System.out.println("================");
+				String quoteOfTheDay = qt.getRandomQuotes();
+				System.out.println("오늘의 명언 : " + quoteOfTheDay);
+				System.out.println("================");
 
-			} else if (input == 3) {
-				// 회원 탈퇴 기능
-				// view 클래스의 showDelete() 생성!
-				// -> 리턴값을 통해 필요한 정보 가져오기!
-				// - 탈퇴할 id, pw를 통해 사용자에게 입력받기
-				// * 입력 받기 : console 에서 진행 -> view 클래스
-				SMVO deleteMem = view.showDelete(null);
-				int row = dao.delete(deleteMem);
-				view.statusDelete(row);
+				if (result != null) { // ✅ 로그인 성공 시
+					// while 종료 → 다음 화면으로 이동
+
+					showMainMenu();
+
+				} else if (input == 3) {
+					// 회원 탈퇴 기능
+					// view 클래스의 showDelete() 생성!
+					// -> 리턴값을 통해 필요한 정보 가져오기!
+					// - 탈퇴할 id, pw를 통해 사용자에게 입력받기
+					// * 입력 받기 : console 에서 진행 -> view 클래스
+					SMVO deleteMem = view.showDelete();
+					int row = dao.delete(deleteMem);
+					view.statusDelete(row);
+				}
 			}
 		}
-		}showMainMenu();
 	}
 
-	public void showMainMenu() {
-		SMView view = new SMView();
-
+	public void showAchievementMenu() {
 		while (true) {
-			int select = view.showMainMenu(); // ✅ 이제 문제 없음
+			System.out.println("\n== 학습 달성률 메뉴 ==");
+			System.out.println("1. 학습 달성률 조회");
+			System.out.println("2. 메인 메뉴로 돌아가기");
+			System.out.print("번호 선택 : ");
+			int choice = sc.nextInt();
 
-			if (select == 1) {
-				System.out.println("📌 할 일 등록 기능 실행!");
-				int choice=view.inputInfo();
-				if(choice==1) {
-					SMVO smvo = view.insertInfo();
-					 dao.addInfo(smvo);
-				}   
-			} else if (select == 2) {
-				System.out.println("📌 학습 달성률 조회 실행!");
-
-			} else if (select == 3) {
-				System.out.println("📌 로그아웃합니다.");
-				break;
+			if (choice == 1) {
+				showAchievementMenu(); // 달성률 출력 메서드
+			} else if (choice == 2) {
+				return; // 메인으로 복귀
 			} else {
-				System.out.println("⚠️ 잘못된 입력입니다. 다시 선택하세요.");
+				System.out.println("⚠ 잘못 선택했습니다.");
 			}
 		}
 	}

@@ -123,9 +123,9 @@ public class UserDAO {
 		String sql = "UPDATE GOALS SET MATH_INPUT_TIME =? , ENG_INPUT_TIME=? WHERE USER_ID=?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			System.out.println("수학점수 : " + gvo.getMath_input_time());
+			System.out.println("수학 점수 : " + gvo.getMath_input_time());
 			psmt.setInt(1, gvo.getMath_input_time());
-			System.out.println("영어점수 : " + gvo.getEng_input_time());
+			System.out.println("영어 점수 : " + gvo.getEng_input_time());
 			psmt.setInt(2, gvo.getEng_input_time());
 			System.out.println("아이디: " + gvo.getUser_id());
 			psmt.setString(3, gvo.getUser_id());
@@ -145,7 +145,7 @@ public class UserDAO {
 		int eng_result = 0;
 		GoalsVO gvo = new GoalsVO();
 		try {
-			System.out.print("현재 누적학습 시간: ");
+			
 			String sql = "SELECT MATH_ACCUMULATED_TIME , ENG_ACCUMULATED_TIME FROM GOALS WHERE USER_ID=? ";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, uvo.getUser_id());

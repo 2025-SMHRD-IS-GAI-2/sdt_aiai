@@ -16,5 +16,6 @@ public class Quotes {
 			int index = rd.nextInt(LifeQuotes.length);
 			return LifeQuotes[index];
 		}
-
+//	커밋
+	
 }
